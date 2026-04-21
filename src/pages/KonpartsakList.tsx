@@ -164,34 +164,7 @@ export default function KonpartsakList() {
             </div>
           )}
         </div>
-
-        <section className="mt-32 flex flex-col md:flex-row items-center gap-12 bg-primary text-on-primary p-12 rounded-lg relative overflow-hidden shadow-xl">
-          <div className="z-10 w-full md:w-1/2 text-left">
-            <h2 className="text-4xl font-headline font-bold mb-4 tracking-tight">Parte hartu artxiboan</h2>
-            <p className="text-lg opacity-90 mb-8 max-w-md font-light">Lagun gaitzazu gure ondarea bizirik mantentzen. Bidali zure konpartsaren informazioa eta argazkiak.</p>
-            <button className="bg-tertiary-fixed-dim text-on-tertiary-fixed px-8 py-3 rounded-lg font-bold tracking-wide transition-all hover:shadow-xl hover:-translate-y-1 active:scale-95">BIDALI INFORMAZIOA</button>
-          </div>
-          <div className="z-10 w-full md:w-1/2 flex justify-end">
-            <div className="grid grid-cols-2 gap-4 rotate-6 opacity-40">
-              <div className="w-24 h-24 bg-white rounded-lg"></div>
-              <div className="w-24 h-24 bg-secondary-container rounded-lg translate-y-8"></div>
-              <div className="w-24 h-24 bg-tertiary-fixed rounded-lg -translate-y-4"></div>
-              <div className="w-24 h-24 bg-primary-container rounded-lg translate-y-4"></div>
-            </div>
-          </div>
-          <div className="absolute -right-24 -top-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        </section>
       </main>
-
-      <footer className="w-full py-12 bg-slate-100 border-t border-surface-container-highest mt-20">
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 px-6 text-center font-body text-sm uppercase tracking-widest">
-          <div className="text-sm font-bold text-slate-500">© Euskal Folklorearen Artxiboa</div>
-          <div className="flex items-center gap-2 text-primary font-bold">
-            <span className="material-symbols-outlined text-lg">copyright</span>
-            <span className="hover:text-amber-500 transition-colors">Creative Commons Aitortu</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

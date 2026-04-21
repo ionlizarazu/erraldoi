@@ -4,6 +4,7 @@ import ErraldoiakList from './pages/ErraldoiakList'
 import KonpartsaDetail from './pages/KonpartsaDetail'
 import ErraldoiDetail from './pages/ErraldoiDetail'
 import Mapa from './pages/Mapa'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
@@ -16,12 +17,12 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-background text-on-surface">
+      <div className="min-h-screen flex flex-col bg-background text-on-surface">
         {/* TopNavBar */}
         <nav className="fixed top-0 left-0 w-full z-[1000] bg-white/80 backdrop-blur-xl border-b border-surface-container-highest">
           <div className="flex justify-between items-center px-8 py-5 max-w-screen-2xl mx-auto">
             <Link title="Hasiera" to="/" className="text-xl font-bold text-primary font-headline tracking-tight no-underline">
-              Erraldoiak
+              erraldoi.eus
             </Link>
             <div className="hidden md:flex items-center gap-8">
               <NavLink to="/konpartsak" className={navLinkClass}>Konpartsak</NavLink>
@@ -34,7 +35,7 @@ function App() {
           </div>
         </nav>
 
-        <div className="pt-20">
+        <div className="pt-20 flex-grow">
           <Routes>
             <Route path="/" element={<Navigate to="/konpartsak" replace />} />
             <Route path="/konpartsak" element={<KonpartsakList />} />
@@ -44,6 +45,8 @@ function App() {
             <Route path="/erraldoi/:id" element={<ErraldoiDetail />} />
           </Routes>
         </div>
+
+        <Footer />
       </div>
     </Router>
   )

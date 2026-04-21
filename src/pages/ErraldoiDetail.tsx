@@ -298,16 +298,6 @@ export default function ErraldoiDetail() {
           </section>
         )}
       </main>
-
-      <footer className="w-full py-12 bg-slate-100 border-t border-surface-container-highest mt-12">
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-6 text-center font-body text-sm uppercase tracking-widest">
-          <span className="text-sm font-bold text-slate-500">© Euskal Folklorearen Artxiboa</span>
-          <div className="flex items-center gap-4 text-primary font-bold">
-            <span className="material-symbols-outlined text-lg">copyright</span>
-            <span>Wikipedia, Wikidata & Commons Archive</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

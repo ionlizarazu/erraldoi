@@ -20,10 +20,15 @@ function Highlight({ text, highlight }: { text: string; highlight: string }) {
     <span>
       {parts.map((part, i) =>
         regex.test(part) ? (
-          <mark key={i} className="bg-amber-200 text-primary font-bold px-0.5 rounded-sm">{part}</mark>
+          <mark
+            key={i}
+            className="bg-amber-200 text-primary font-bold px-0.5 rounded-sm"
+          >
+            {part}
+          </mark>
         ) : (
           part
-        )
+        ),
       )}
     </span>
   );
@@ -34,11 +39,13 @@ export default function ErraldoiakList() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredErraldoiak = erraldoiak.filter(e => {
+  const filteredErraldoiak = erraldoiak.filter((e) => {
     const search = searchTerm.toLowerCase().trim();
-    return (e.izena?.toLowerCase() || "").includes(search) ||
-           (e.konpartsa?.toLowerCase() || "").includes(search) ||
-           (e.herria?.toLowerCase() || "").includes(search);
+    return (
+      (e.izena?.toLowerCase() || "").includes(search) ||
+      (e.konpartsa?.toLowerCase() || "").includes(search) ||
+      (e.herria?.toLowerCase() || "").includes(search)
+    );
   });
 
   useEffect(() => {
@@ -62,19 +69,21 @@ export default function ErraldoiakList() {
         const response = await fetch(url);
         const data = await response.json();
 
-        const results = data.results.bindings.map((b: any) => ({
-          id: b.item.value.split('/').pop(),
-          izena: b.itemLabel.value,
-          konpartsa: b.konpartsaLabel?.value || "Konpartsa ezezaguna",
-          herria: b.herriaLabel?.value || "Ezezaguna",
-          irudia: b.irudia?.value,
-          altuera: b.altuera?.value,
-          pisua: b.pisua?.value
-        })).sort((a: any, b: any) => {
-          if (a.irudia && !b.irudia) return -1;
-          if (!a.irudia && b.irudia) return 1;
-          return 0;
-        });
+        const results = data.results.bindings
+          .map((b: any) => ({
+            id: b.item.value.split("/").pop(),
+            izena: b.itemLabel.value,
+            konpartsa: b.konpartsaLabel?.value || "Konpartsa ezezaguna",
+            herria: b.herriaLabel?.value || "Ezezaguna",
+            irudia: b.irudia?.value,
+            altuera: b.altuera?.value,
+            pisua: b.pisua?.value,
+          }))
+          .sort((a: any, b: any) => {
+            if (a.irudia && !b.irudia) return -1;
+            if (!a.irudia && b.irudia) return 1;
+            return 0;
+          });
 
         setErraldoiak(results);
       } catch (error) {
@@ -98,14 +107,24 @@ export default function ErraldoiakList() {
   return (
     <div className="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
       <main className="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        {/* Header Section */}
-        <header className="mb-16 max-w-3xl text-left pt-12">
-          <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-primary mb-6 tracking-tighter">Erraldoien Zerrenda</h1>
-          <p className="text-on-surface-variant text-lg leading-relaxed font-light italic mb-2">Ezagutu gure erraldoiak, haien gaineko informazioa eta irudiak.</p>
-          <p className="text-outline text-xs uppercase tracking-widest font-bold mb-4">Informazio guztia Wikipedia, Wikidata eta Wikimedia Commons proiektuetatik dator.</p>
+        {/* Header Section (Matching KonpartsakList style) */}
+        <header className="mb-20 ml-[5%] pt-12 text-left">
+          <h1 className="text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6">
+            Erraldoien
+            <br />
+            Zerrenda
+          </h1>
+          <div className="h-1.5 w-24 bg-tertiary-fixed-dim rounded-full mb-6"></div>
+          <p className="text-on-surface-variant text-lg leading-relaxed font-light italic mb-2">
+            Ezagutu gure erraldoiak.
+          </p>
+          <p className="text-outline text-xs uppercase tracking-widest font-bold mb-8">
+            Informazio guztia Wikipedia, Wikidata eta Wikimedia Commons
+            proiektuetatik dator.
+          </p>
           {searchTerm && (
             <p className="text-primary font-label text-sm uppercase tracking-widest animate-pulse">
-               "{searchTerm}" bilatzen...
+              "{searchTerm}" bilatzen...
             </p>
           )}
         </header>
@@ -114,7 +133,9 @@ export default function ErraldoiakList() {
         <div className="mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="relative group w-full max-w-2xl text-left">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <span className="material-symbols-outlined text-outline">search</span>
+              <span className="material-symbols-outlined text-outline">
+                search
+              </span>
             </div>
             <input
               className="w-full bg-surface-container-high border-none rounded-lg py-4 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary transition-all duration-300"
@@ -126,7 +147,8 @@ export default function ErraldoiakList() {
             />
           </div>
           <div className="text-sm font-label text-on-surface-variant uppercase tracking-widest whitespace-nowrap">
-            {filteredErraldoiak.length} erraldoi {searchTerm ? 'aurkitu dira' : 'guztira'}
+            {filteredErraldoiak.length} erraldoi{" "}
+            {searchTerm ? "aurkitu dira" : "guztira"}
           </div>
         </div>
 
@@ -141,11 +163,19 @@ export default function ErraldoiakList() {
               >
                 <div className="aspect-[3/4] overflow-hidden bg-surface-variant relative">
                   {e.irudia ? (
-                    <img className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" alt={e.izena} src={e.irudia} />
+                    <img
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      alt={e.izena}
+                      src={e.irudia}
+                    />
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center text-outline-variant gap-4">
-                      <span className="material-symbols-outlined text-6xl">person</span>
-                      <span className="text-xs font-bold uppercase tracking-widest opacity-50">Irudirik gabe</span>
+                      <span className="material-symbols-outlined text-6xl">
+                        person
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-widest opacity-50">
+                        Irudirik gabe
+                      </span>
                     </div>
                   )}
                   <div className="absolute bottom-4 right-4 bg-tertiary-fixed-dim text-on-tertiary-fixed px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase shadow-sm">
@@ -162,12 +192,20 @@ export default function ErraldoiakList() {
 
                   <div className="mt-auto flex gap-6 border-t border-outline-variant/15 pt-4">
                     <div>
-                      <span className="block text-[10px] uppercase tracking-widest text-outline mb-1 font-bold">Altuera</span>
-                      <span className="text-on-surface font-semibold text-sm">{e.altuera ? `${e.altuera}m` : "---"}</span>
+                      <span className="block text-[10px] uppercase tracking-widest text-outline mb-1 font-bold">
+                        Altuera
+                      </span>
+                      <span className="text-on-surface font-semibold text-sm">
+                        {e.altuera ? `${e.altuera}m` : "---"}
+                      </span>
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase tracking-widest text-outline mb-1 font-bold">Pisua</span>
-                      <span className="text-on-surface font-semibold text-sm">{e.pisua ? `${e.pisua}kg` : "---"}</span>
+                      <span className="block text-[10px] uppercase tracking-widest text-outline mb-1 font-bold">
+                        Pisua
+                      </span>
+                      <span className="text-on-surface font-semibold text-sm">
+                        {e.pisua ? `${e.pisua}kg` : "---"}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -180,17 +218,6 @@ export default function ErraldoiakList() {
           )}
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="w-full py-12 bg-slate-100 border-t border-surface-container-highest">
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 px-6 text-center font-body text-sm uppercase tracking-widest">
-          <span className="text-sm font-bold text-slate-500">© Euskal Folklorearen Artxiboa</span>
-          <div className="flex items-center gap-2 text-primary font-bold">
-            <span className="material-symbols-outlined text-lg">copyright</span>
-            <span>Wikipedia, Wikidata & Commons Archive</span>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

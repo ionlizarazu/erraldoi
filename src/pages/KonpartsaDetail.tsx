@@ -239,17 +239,7 @@ export default function KonpartsaDetail() {
           </div>
         </section>
       </main>
-
-      <footer className="bg-surface-container-lowest border-t border-surface-container-highest w-full flex flex-col items-center justify-center space-y-4 py-12">
-        <div className="flex items-center space-x-2">
-          <span className="material-symbols-outlined text-secondary text-xl">
-            copyright
-          </span>
-          <span className="font-body text-xs font-medium text-secondary uppercase tracking-widest">
-            Euskal Folklorearen Artxiboa · Wikipedia, Wikidata & Commons
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }
+
