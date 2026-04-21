@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors from new design */
+  --color-surface-bright: #fafaf5;
+  --color-primary: #13197e;
+  --color-on-primary: #ffffff;
+  --color-background: #fafaf5;
+  --color-on-primary-fixed: #00026c;
+  --color-on-error-container: #93000a;
+  --color-on-surface: #1a1c19;
+  --color-surface-tint: #4d54b4;
+  --color-primary-fixed: #e0e0ff;
+  --color-surface-container-highest: #e3e3de;
+  --color-primary-fixed-dim: #bec2ff;
+  --color-surface-container-low: #f4f4ef;
+  --color-outline-variant: #c6c5d4;
+  --color-error: #ba1a1a;
+  --color-inverse-primary: #bec2ff;
+  --color-secondary-container: #ccebc7;
+  --color-surface-container-high: #e8e8e3;
+  --color-tertiary-fixed-dim: #f8bc4f;
+  --color-on-tertiary-container: #dba237;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-dim: #dadad5;
+  --color-on-secondary: #ffffff;
+  --color-on-background: #1a1c19;
+  --color-on-surface-variant: #464652;
+  --color-on-tertiary-fixed: #271900;
+  --color-outline: #767683;
+  --color-on-secondary-container: #506b4f;
+  --color-on-primary-container: #9ea5ff;
+  --color-tertiary-fixed: #ffdeab;
+  --color-primary-container: #2d3494;
+  --color-tertiary-container: #573b00;
+  --color-inverse-surface: #2f312e;
+  --color-secondary-fixed-dim: #b0cfad;
+  --color-surface: #fafaf5;
+  --color-on-primary-fixed-variant: #343b9b;
+  --color-on-secondary-fixed: #07200b;
+  --color-on-secondary-fixed-variant: #334d33;
+  --color-inverse-on-surface: #f1f1ec;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary-fixed-variant: #5f4100;
+  --color-surface-container: #eeeee9;
+  --color-secondary-fixed: #ccebc7;
+  --color-tertiary: #3a2700;
+  --color-on-tertiary: #ffffff;
+  --color-on-error: #ffffff;
+  --color-surface-variant: #e3e3de;
+  --color-secondary: #4a6549;
+
+  /* Border Radius */
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  /* Fonts */
+  --font-headline: "Epilogue", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+@layer base {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, #ff4d4d 0%, #ff8080 100%);
+  }
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
