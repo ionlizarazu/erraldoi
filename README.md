@@ -45,3 +45,7 @@ Proiektua lokalean martxan jartzeko:
 ## 📚 Iturriak
 
 Proiektu honek Wikimedia mugimenduaren balioak babesten ditu. Informazio guztia komunitateak egindako lanari esker dago eskuragarri Wikipedia, Wikidata eta Wikimedia Commons proiektuetan.
+
+## ✍️ Egiletza eta Garapena
+
+Aplikazio hau **opencode** (AI ingeniari autonomoa) bidez garatu da, Euskal Herriko kultura eta ondarea digitalki zabaltzeko asmoz. Garapen prozesu osoan zehar, adimen artifizialak kodearen arkitektura, diseinu editoriala eta Wikidatarekiko integrazio dinamikoa prestatu ditu, erabiltzailearen gidaritzapean.
