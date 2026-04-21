@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, NavLink, Link } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Navigate, NavLink, Link } from 'react-router-dom'
 import KonpartsakList from './pages/KonpartsakList'
 import ErraldoiakList from './pages/ErraldoiakList'
 import KonpartsaDetail from './pages/KonpartsaDetail'
@@ -7,10 +7,10 @@ import Mapa from './pages/Mapa'
 import './App.css'
 
 function App() {
-  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  const navLinkClass = ({ isActive }: { isActive: boolean }) => 
     `font-headline tracking-tight font-semibold transition-all duration-300 no-underline pb-1 border-b-2 ${
-      isActive
-        ? "text-primary border-amber-400"
+      isActive 
+        ? "text-primary border-amber-400" 
         : "text-slate-600 border-transparent hover:text-amber-500"
     }`;
 
@@ -21,7 +21,7 @@ function App() {
         <nav className="fixed top-0 left-0 w-full z-[1000] bg-white/80 backdrop-blur-xl border-b border-surface-container-highest">
           <div className="flex justify-between items-center px-8 py-5 max-w-screen-2xl mx-auto">
             <Link title="Hasiera" to="/" className="text-xl font-bold text-primary font-headline tracking-tight no-underline">
-              Erraldoi.eus
+              Erraldoiak
             </Link>
             <div className="hidden md:flex items-center gap-8">
               <NavLink to="/konpartsak" className={navLinkClass}>Konpartsak</NavLink>
