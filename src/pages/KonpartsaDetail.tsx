@@ -125,7 +125,7 @@ export default function KonpartsaDetail() {
               <span className="inline-block px-4 py-1 mb-4 rounded-full bg-tertiary-fixed-dim text-tertiary font-bold text-xs uppercase tracking-widest shadow-lg">
                 Konpartsa
               </span>
-              <h1 className="font-headline font-black text-5xl md:text-8xl text-white tracking-tighter leading-none mb-6">
+              <h1 className="font-headline font-black text-5xl sm:text-7xl md:text-8xl text-white tracking-tighter leading-none mb-6 break-words">
                 {data.izena}
               </h1>
             </div>

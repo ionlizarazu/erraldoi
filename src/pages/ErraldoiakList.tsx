@@ -109,12 +109,11 @@ export default function ErraldoiakList() {
       <main className="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
         {/* Header Section (Matching KonpartsakList style) */}
         <header className="mb-20 ml-[5%] pt-12 text-left">
-          <h1 className="text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6">
-            Erraldoien
-            <br />
-            Zerrenda
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6 break-words">
+            Erraldoien<br />Zerrenda
           </h1>
           <div className="h-1.5 w-24 bg-tertiary-fixed-dim rounded-full mb-6"></div>
+
           <p className="text-on-surface-variant text-lg leading-relaxed font-light italic mb-2">
             Ezagutu gure erraldoiak.
           </p>

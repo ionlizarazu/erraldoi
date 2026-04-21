@@ -191,7 +191,7 @@ export default function ErraldoiDetail() {
 
           <div className="w-full lg:w-1/2 flex flex-col text-left">
             <header className="mb-12">
-              <h1 className="font-headline text-6xl md:text-8xl font-extrabold text-primary mb-6 tracking-tighter leading-none">
+              <h1 className="font-headline text-5xl sm:text-6xl md:text-8xl font-extrabold text-primary mb-6 tracking-tighter leading-none break-words">
                 {data.izena}
               </h1>
               <div className="h-1.5 w-32 bg-tertiary-fixed-dim rounded-full mb-8"></div>

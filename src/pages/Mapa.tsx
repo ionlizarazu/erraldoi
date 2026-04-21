@@ -94,7 +94,7 @@ export default function Mapa() {
     <div className="bg-background min-h-screen font-body">
       <main className="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto pt-12">
         <header className="mb-12 text-left">
-          <h1 className="text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6 break-words">
             Ondarearen<br />Mapa
           </h1>
           <div className="h-1.5 w-24 bg-tertiary-fixed-dim rounded-full mb-6"></div>

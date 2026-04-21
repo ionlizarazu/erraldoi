@@ -94,7 +94,7 @@ export default function KonpartsakList() {
     <div className="bg-background text-on-surface font-body selection:bg-tertiary-fixed-dim selection:text-on-tertiary-fixed">
       <main className="pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
         <header className="mb-20 ml-[5%] pt-12 text-left">
-          <h1 className="text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none mb-6 break-words">
             Konpartsen<br />Zerrenda
           </h1>
           <div className="h-1.5 w-24 bg-tertiary-fixed-dim rounded-full mb-6"></div>
