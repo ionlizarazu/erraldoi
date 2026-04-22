@@ -45,8 +45,13 @@ export default function KonpartsakList() {
           ?item wdt:P31/wdt:P279* wd:Q130353547.
           ?item wdt:P131 ?herriaItem.
           ?herriaItem (wdt:P131/(wdt:P131*)/^wdt:P527) wd:Q47588.
-          OPTIONAL { ?item wdt:P18 ?irudia. }
-          SERVICE wikibase:label {
+          
+          # Irudia lortu: konpartsarena edo herriarena ordezko gisa
+          OPTIONAL { ?item wdt:P18 ?kIrudia. }
+          OPTIONAL { ?herriaItem wdt:P18 ?hIrudia. }
+          BIND(COALESCE(?kIrudia, ?hIrudia) AS ?irudia)
+          
+          SERVICE wikibase:label { 
             bd:serviceParam wikibase:language "[AUTO_LANGUAGE],eu,es,en".
             ?herriaItem rdfs:label ?herriaLabel.
             ?item rdfs:label ?itemLabel.
@@ -54,6 +59,7 @@ export default function KonpartsakList() {
         }
         GROUP BY ?item ?itemLabel
       `;
+
 
       try {
         const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}&format=json`;
