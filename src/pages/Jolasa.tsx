@@ -226,28 +226,28 @@ export default function Jolasa() {
   );
 
   return (
-    <div className="max-w-xl mx-auto px-6 py-12 flex flex-col items-center min-h-[80vh] overflow-hidden relative">
-      <div className="w-full flex justify-between items-center mb-8">
+    <div className="max-w-xl mx-auto px-4 py-4 sm:py-12 flex flex-col items-center min-h-[calc(100vh-80px)] sm:min-h-[80vh] overflow-hidden relative justify-center">
+      <div className="w-full flex justify-between items-center mb-4 sm:mb-8">
         <div className="text-left">
           <p className="text-[10px] font-bold uppercase tracking-widest text-outline">Puntuazioa</p>
-          <p className="text-3xl font-black text-primary">{puntuazioa}</p>
+          <p className="text-2xl sm:text-3xl font-black text-primary">{puntuazioa}</p>
         </div>
         <div className="flex gap-1">
           {[...Array(3)].map((_, i) => (
-            <span key={i} className={`material-symbols-outlined text-3xl ${i < bizitzak ? 'text-red-500' : 'text-slate-200'}`} style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
+            <span key={i} className={`material-symbols-outlined text-2xl sm:text-3xl ${i < bizitzak ? 'text-red-500' : 'text-slate-200'}`} style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
           ))}
         </div>
       </div>
 
-      <h2 className="text-2xl font-headline font-black text-primary mb-2 text-center">{galdera?.testua}</h2>
-      <p className="text-xs text-outline uppercase tracking-widest mb-8">Arrastatu hautatutako erantzunera</p>
+      <h2 className="text-xl sm:text-2xl font-headline font-black text-primary mb-1 text-center leading-tight">{galdera?.testua}</h2>
+      <p className="text-[10px] text-outline uppercase tracking-widest mb-4 sm:mb-8">Arrastatu erantzunera</p>
 
-      <div className="relative w-full aspect-[3/4] max-w-[350px]">
+      <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] max-w-[320px] sm:max-w-[350px]">
         {/* Aukerak orrialdean bertan idatzita (Gida gisa) */}
-        <div className="absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 text-outline font-black uppercase tracking-widest opacity-20 text-xl pointer-events-none w-64 text-center">
+        <div className="absolute -left-12 sm:-left-16 top-1/2 -translate-y-1/2 -rotate-90 text-outline font-black uppercase tracking-widest opacity-20 text-sm sm:text-xl pointer-events-none w-64 text-center">
             {aukerak?.[0]}
         </div>
-        <div className="absolute -right-16 top-1/2 -translate-y-1/2 rotate-90 text-outline font-black uppercase tracking-widest opacity-20 text-xl pointer-events-none w-64 text-center">
+        <div className="absolute -right-12 sm:-right-16 top-1/2 -translate-y-1/2 rotate-90 text-outline font-black uppercase tracking-widest opacity-20 text-sm sm:text-xl pointer-events-none w-64 text-center">
             {aukerak?.[1]}
         </div>
 
@@ -291,9 +291,13 @@ export default function Jolasa() {
         </AnimatePresence>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 w-full mt-12 max-w-[350px]">
+      <div className="grid grid-cols-2 gap-4 w-full mt-8 sm:mt-12 max-w-[320px] sm:max-w-[350px]">
         {aukerak?.map((a, i) => (
-          <button key={i} onClick={() => handleErantzuna(a)} className="bg-slate-50 border border-slate-200 p-4 rounded-2xl font-bold text-primary hover:bg-primary hover:text-white transition-all text-sm uppercase tracking-widest active:scale-95">
+          <button 
+            key={i} 
+            onClick={() => handleErantzuna(a)} 
+            className="bg-white border-2 border-primary/10 py-4 sm:py-5 px-2 rounded-2xl font-black text-primary hover:bg-primary hover:text-white hover:border-primary transition-all text-[11px] sm:text-xs uppercase tracking-[0.2em] active:scale-95 shadow-lg shadow-primary/5 hover:shadow-primary/20"
+          >
             {a}
           </button>
         ))}
