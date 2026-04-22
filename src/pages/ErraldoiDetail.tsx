@@ -130,8 +130,8 @@ export default function ErraldoiDetail() {
 
   if (!data) return <div className="p-20 text-center text-primary font-headline text-2xl">Ez da erraldoia aurkitu.</div>;
 
-  // Wikimedia Commons upload URL using depicts and caption parameters
-  const uploadUrl = `https://commons.wikimedia.org/wiki/Special:UploadWizard?captionlang=eu&caption=${encodeURIComponent(data.izena)}&depicts=${data.id}`;
+  // Wikimedia Commons upload URL using categories parameter
+  const uploadUrl = `https://commons.wikimedia.org/wiki/Special:UploadWizard?captionlang=eu&caption=${encodeURIComponent(data.izena)}&categories=Figures_of_giants&wikidataItem=${data.id}`;
 
   return (
     <div className="bg-background text-on-surface font-body selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">

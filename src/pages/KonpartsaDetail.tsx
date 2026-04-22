@@ -108,7 +108,7 @@ export default function KonpartsaDetail() {
       </div>
     );
 
-  const uploadUrl = `https://commons.wikimedia.org/wiki/Special:UploadWizard?captionlang=eu&caption=${encodeURIComponent(data.izena)}&depicts=${data.id}`;
+  const uploadUrl = `https://commons.wikimedia.org/wiki/Special:UploadWizard?captionlang=eu&caption=${encodeURIComponent(data.izena)}&categories=Figures_of_giants&wikidataItem=${data.id}`;
 
   return (
     <div className="bg-background text-on-surface font-body selection:bg-tertiary-fixed-dim selection:text-tertiary">
