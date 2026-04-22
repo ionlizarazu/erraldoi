@@ -7,6 +7,7 @@ interface KonpartsaData {
   irudia?: string;
   herriaLabel?: string;
   urtea?: string;
+  wikipediaUrl?: string;
 }
 
 interface ErraldoiKidea {
@@ -26,11 +27,15 @@ export default function KonpartsaDetail() {
     const fetchData = async () => {
       setLoading(true);
       const query = `
-        SELECT ?item ?itemLabel ?irudia ?herriaLabel ?urtea WHERE {
+        SELECT ?item ?itemLabel ?irudia ?herriaLabel ?urtea ?wikipedia WHERE {
           BIND(wd:${id} AS ?item)
           OPTIONAL { ?item wdt:P18 ?irudia. }
           OPTIONAL { ?item wdt:P131 ?herria. }
           OPTIONAL { ?item wdt:P571 ?urtea. }
+          OPTIONAL {
+            ?wikipedia schema:about ?item;
+              schema:isPartOf <https://eu.wikipedia.org/>.
+          }
           SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],eu,es,en". }
         }
       `;
@@ -65,11 +70,11 @@ export default function KonpartsaDetail() {
             izena: b.itemLabel.value,
             irudia: b.irudia?.value,
             herriaLabel: b.herriaLabel?.value,
-            urtea: b.urtea?.value
-              ? new Date(b.urtea.value).getFullYear().toString()
-              : undefined,
+            urtea: b.urtea?.value ? new Date(b.urtea.value).getFullYear().toString() : undefined,
+            wikipediaUrl: b.wikipedia?.value
           });
         }
+
 
         const eKideak = eJson.results.bindings.map((k: any) => ({
           id: k.item.value.split("/").pop(),
@@ -167,19 +172,43 @@ export default function KonpartsaDetail() {
                 </div>
               </div>
               <div className="hidden md:block md:col-span-4 p-8 text-left">
-                {!data.irudia && (
+                <p className="font-body text-on-surface-variant italic leading-relaxed mb-6">
+                </p>
+
+                <div className="flex flex-wrap gap-3 mb-8">
                   <a
-                    href={uploadUrl}
+                    href={`https://www.wikidata.org/wiki/${data.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-bold text-xs tracking-widest uppercase hover:bg-amber-600 transition-all no-underline shadow-md active:scale-95"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-primary rounded-md text-[10px] font-bold tracking-widest uppercase hover:bg-primary hover:text-white transition-all no-underline border border-primary/10 shadow-sm"
                   >
-                    <span className="material-symbols-outlined text-sm">
-                      add_a_photo
-                    </span>
-                    Gehitu argazkia
+                    <img src="https://www.wikidata.org/static/favicon/wikidata.ico" alt="" className="w-3 h-3" />
+                    Wikidata
                   </a>
-                )}
+                  {data.wikipediaUrl && (
+                    <a
+                      href={data.wikipediaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 bg-white text-primary rounded-md text-[10px] font-bold tracking-widest uppercase hover:bg-primary hover:text-white transition-all no-underline border border-primary/10 shadow-sm"
+                    >
+                      <img src="https://eu.wikipedia.org/static/favicon/wikipedia.ico" alt="" className="w-3 h-3" />
+                      Wikipedia
+                    </a>
+                  )}
+                </div>
+
+                <a
+                  href={uploadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-bold text-xs tracking-widest uppercase hover:bg-amber-600 transition-all no-underline shadow-md active:scale-95"
+                >
+                  <span className="material-symbols-outlined text-sm">
+                    add_a_photo
+                  </span>
+                  Gehitu argazkia
+                </a>
               </div>
             </div>
           </div>
