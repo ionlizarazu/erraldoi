@@ -114,7 +114,7 @@ export default function Mapa() {
           <div className="h-[700px] w-full rounded-2xl overflow-hidden border border-surface-container-highest shadow-2xl relative z-10">
             <MapContainer center={[43.0, -2.0]} zoom={8} className="h-full w-full">
               <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                  url="https://tile.openstreetmap.bzh/eu/{z}/{x}/{y}.png"
                 attribution='&copy; CARTO'
               />
               {taldeak.map((taldea, idx) => (
